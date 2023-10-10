@@ -22,7 +22,7 @@ CREATE TABLE exp5(
   MARKS NUMBER
 );
 
-CREATE TABLE salary_log (
+CREATE TABLE MARKS_log (
   log_id NUMBER GENERATED ALWAYS AS IDENTITY,
   regno NUMBER,
   USERNAME VARCHAR2(10),
@@ -38,12 +38,12 @@ insert into exp5 values(3,'SHREE','CSE',101)
 ### PLSQL Trigger code
 ```
 -- Create the trigger
-CREATE OR REPLACE TRIGGER log_sal_update
+CREATE OR REPLACE TRIGGER log_MARKS_update
 BEFORE UPDATE ON employe
 FOR EACH ROW
 BEGIN
   IF :OLD.sMARKS != :NEW.MARKS THEN
-    INSERT INTO sal_log (regno, USERNAME, old_MARKS, new_MARKS, update_date)
+    INSERT INTO MARKS_log (regno, USERNAME, old_MARKS, new_MARKS, update_date)
     VALUES (:OLD.empid, :OLD.empname, :OLD.salary, :NEW.salary, SYSDATE);
   END IF;
 END;
