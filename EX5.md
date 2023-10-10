@@ -43,7 +43,7 @@ BEFORE UPDATE ON employe
 FOR EACH ROW
 BEGIN
   IF :OLD.sMARKS != :NEW.MARKS THEN
-    INSERT INTO MARKS_log (regno, USERNAME, old_MARKS, new_MARKS, update_date)
+    INSERT INTO exp5_log (regno, USERNAME, old_MARKS, new_MARKS, update_date)
     VALUES (:OLD.empid, :OLD.empname, :OLD.salary, :NEW.salary, SYSDATE);
   END IF;
 END;
@@ -53,15 +53,15 @@ insert into exp5 values(1,'MUKESH','AIDS',55);
 insert into exp5 values(2,'SAKTHI','AIDS',71)
 insert into exp5 values(3,'SHREE','CSE',101)
 
--- Update the salary of an employee
+-- Update the marks of an student
 UPDATE exp5
 SET MARKS =99
 WHERE regno = 3;
--- Display the employee table
+-- Display the marks table
 SELECT * FROM exp5;
 
--- Display the marks_log table
-SELECT * FROM marks_log;
+-- Display the exp5_log table
+SELECT * FROM exp5_log;
 ```
 
 ### Output:
